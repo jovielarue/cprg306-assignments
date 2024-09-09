@@ -2,10 +2,21 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
-      <h1>CPRG 306: Web Development 2 - Assignments</h1>
-      <Link href={"/week-2"}>week 2</Link>
-      <Link href={"/week-3"}>week 3</Link>
+    <main className="flex flex-col gap-5">
+      <h1 className="text-text text-4xl font-bold">
+        CPRG 306: Web Development 2 - Assignments
+      </h1>
+      <ul className="flex flex-col gap-2">
+        <Link href={"/week-2"} className={btnStyle}>
+          Week 2
+        </Link>
+        <Link href={"/week-3"} className={btnStyle}>
+          Week 3
+        </Link>
+      </ul>
     </main>
   );
 }
+
+const btnStyle =
+  "px-3 py-2 text-text text-lg hover:text-lg bg-base w-fit rounded-md hover:bg-pink hover:text-base font-bold";
