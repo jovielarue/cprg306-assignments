@@ -9,13 +9,13 @@ export default function NewItem() {
   };
 
   const decrement = () => {
-    setQuantity(quantity > 0 ? quantity - 1 : quantity);
+    setQuantity(quantity > 1 ? quantity - 1 : quantity);
   };
 
   return (
-    <div className="flex gap-3 justify-around items-center w-[20vw] bg-text overflow-clip">
+    <div className="flex gap-3 justify-around items-center min-w-[20%] max-w-[50%] bg-text overflow-clip">
       <button
-        className="px-3 py-2 bg-pink text-2xl w-[5vw] h-[5vw]"
+        className="flex justify-center px-5 py-2 bg-pink text-2xl min-w-[5vw] min-h-[5vw]"
         onClick={decrement}
       >
         -
@@ -24,7 +24,7 @@ export default function NewItem() {
         {quantity}
       </div>
       <button
-        className="px-3 py-2 bg-pink text-2xl w-[5vw] h-[5vw]"
+        className="flex justify-center px-5 py-2 bg-pink text-2xl min-w-[5vw] min-h-[5vw]"
         onClick={increment}
       >
         +
