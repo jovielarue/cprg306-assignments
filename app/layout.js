@@ -1,13 +1,12 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import Image from "next/image";
 import { TiHome } from "react-icons/ti";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "WD2 Assignments",
+  title: "Jovie's Web Dev Assignments",
   description: "Assignments for Web Dev 2 at SAIT",
 };
 
@@ -19,6 +18,7 @@ export default function RootLayout({ children }) {
           href={"/"}
           className="absolute text-xl top-2 left-2 bg-text text-pink px-3 py-2 hover:bg-pink hover:text-text flex justify-center items-center gap-2"
         >
+          {/*icon for home icon from library*/}
           <TiHome />
           home
         </Link>

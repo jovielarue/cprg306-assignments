@@ -2,18 +2,21 @@
 import { useEffect, useState } from "react";
 
 const fetchMealIdeas = async (ingredient) => {
-  const mealIdeas = await fetch(
+  const mealIdeasResponse = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`,
   );
+  const mealIdeas = await mealIdeasResponse.json();
 
-  return mealIdeas;
+  return mealIdeas.meals;
 };
 
 export default function MealIdeas({ ingredient }) {
-  const [meals, setMeals] = useState();
+  const [meals, setMeals] = useState([]);
 
-  const loadMealIdeas = () => {
-    setMeals(fetchMealIdeas(ingredient));
+  const loadMealIdeas = async () => {
+    const mealsToSet = await fetchMealIdeas(ingredient);
+    console.log(mealsToSet);
+    setMeals(mealsToSet === null ? [] : mealsToSet);
   };
 
   useEffect(() => {
@@ -24,7 +27,7 @@ export default function MealIdeas({ ingredient }) {
     <div>
       <h3>Meal ideas:</h3>
       {meals.map((item) => {
-        return <p key={item.idMeal}>item.strMeal</p>;
+        return <p key={item.idMeal}>{item.strMeal}</p>;
       })}
     </div>
   );

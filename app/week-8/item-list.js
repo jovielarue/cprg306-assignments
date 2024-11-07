@@ -2,10 +2,9 @@
 import Item from "./item";
 import { useState } from "react";
 
-export default function ItemList({ items }) {
+export default function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
-  // function to sort items alphabetically by product category
-  console.log("Items", items);
+
   items.sort((a, b) => {
     if (sortBy == "name") {
       const cat1 = a.name.toUpperCase();
@@ -40,8 +39,9 @@ export default function ItemList({ items }) {
         </div>
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <Item
+            onSelect={() => onItemSelect(item)}
             name={item.name}
             quantity={item.quantity}
             category={item.category}
