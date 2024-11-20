@@ -33,7 +33,7 @@ export default function Page() {
             <p>
               Welcome, {user.displayName}! ({user.email})
             </p>
-            <ShoppingListPage />
+            <ShoppingListPage user={user} />
           </>
         )}
       </main>

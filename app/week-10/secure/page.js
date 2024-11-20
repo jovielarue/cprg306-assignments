@@ -1,14 +1,43 @@
 "use client";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
-import itemsData from "./items.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import MealIdeas from "./meal-ideas";
+import { addItem, getItems } from "../_services/shopping-list-service";
 
-export default function ShoppingListPage() {
-  const [items, setItems] = useState(itemsData);
+export default function ShoppingListPage({ user }) {
+  const [items, setItems] = useState([
+    {
+      id: "1h2GJKH12gkHG31h1H",
+      name: "milk, 4 L 🥛",
+      quantity: 1,
+      category: "dairy",
+    },
+    {
+      id: "1h2GJKH12gkHG31h1H",
+      name: "milk, 4 L 🥛",
+      quantity: 1,
+      category: "dairy",
+    },
+  ]);
   const [selectedItemName, setSelectedItemName] = useState("chicken");
+
+  const loadItems = async () => {
+    setItems([
+      {
+        id: "1h2GJKH12gkHG31h1H",
+        name: "milk, 4 L 🥛",
+        quantity: 1,
+        category: "dairy",
+      },
+    ]);
+    //setItems(await getItems(user.uid));
+  };
+
+  useEffect(() => {
+    loadItems();
+  }, []);
 
   const handleItemSelect = (item) => {
     const itemNameCleaned = item.name.replace(
@@ -23,6 +52,7 @@ export default function ShoppingListPage() {
   // it must be an array since it needs to be sorted in item-list.js
   const handleAddItem = (item) => {
     setItems([...items, item]);
+    addItem(item);
   };
 
   return (

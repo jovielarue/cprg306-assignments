@@ -31,10 +31,13 @@ export default function Home() {
         <Link href={"/week-9"} className={btnStyle}>
           Week 9
         </Link>
+        <Link href={"/week-10"} className={btnStyle}>
+          Week 10
+        </Link>
       </ul>
     </main>
   );
 }
 
 const btnStyle =
-  "px-3 py-2 text-text text-lg hover:text-lg bg-base w-fit hover:bg-pink font-bold";
+  "px-3 py-2 text-text text-lg hover:text-lg bg-base w-[8rem] hover:bg-pink font-bold text-center";
